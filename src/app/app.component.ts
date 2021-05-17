@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'my-car-log';
+  constructor(private http: HttpClient) {
+  }
+  getBrands(): any {
+    return this.http.get('http://localhost:9092/api/brands').subscribe(response =>
+    console.log(response)); // returns a subscription
+  }
 }
