@@ -4,7 +4,8 @@ import {LoginComponent} from './components/authorization/login/login.component';
 import {SignupComponent} from './components/authorization/signup/signup.component';
 import {HomePageComponent} from './components/home-page/home-page.component';
 import {ModelsComponent} from './components/models/models.component';
-import {VehiclesComponent} from "./components/vehicles/vehicles.component";
+import {VehiclesComponent} from './components/vehicles/vehicles.component';
+import {VehicleComponent} from './components/vehicle/vehicle.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: ':car-brand/:model',
     component: VehiclesComponent
+  },
+  {
+    path: ':car-brand/:model/:vehicle-id',
+    component: VehicleComponent
   }
 ];
 
