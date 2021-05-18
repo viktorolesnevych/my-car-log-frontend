@@ -1,7 +1,8 @@
 <h2 class="center">Car Brands</h2>
 <div class="container">
   <div *ngIf="brands" class="collection">
-    <a *ngFor="let brand of brands" class="collection-item"><span class="black-text">{{brand.name}}</span>
+    <a *ngFor="let brand of brands" class="collection-item" routerLink="/{{brand.name}}">
+      <span class="black-text">{{brand.name}}</span>
       <span class="slogan grey-text"> {{brand.slogan}}</span></a>
   </div>
 </div>

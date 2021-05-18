@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {LoginComponent} from './components/authorization/login/login.component';
 import {SignupComponent} from './components/authorization/signup/signup.component';
 import {HomePageComponent} from './components/home-page/home-page.component';
+import {ModelsComponent} from "./components/models/models.component";
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: ':car-brand',
+    component: ModelsComponent
   },
 ];
 
