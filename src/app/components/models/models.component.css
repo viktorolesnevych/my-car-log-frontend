@@ -1,3 +1,9 @@
 .card-image{
   height: 185px;
 }
+.nav-wrapper{
+  background-color: lightslategrey;
+}
+.br-container{
+  margin-left: 30px;
+}
