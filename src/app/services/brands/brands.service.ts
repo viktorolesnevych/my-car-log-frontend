@@ -14,7 +14,7 @@ export class BrandsService {
   getBrands(): Observable<Brand[]>{
     return this.http.get<Brand[]>(this.apiUrl);
   }
-  getModels(model: string): Observable<any>{
+  getBrand(model: string): Observable<any>{
     return  this.http.get(`${this.apiUrl}/name=${model}`);
   }
 }

@@ -17,9 +17,9 @@ export class ModelsComponent implements OnInit {
     this.route.paramMap
       .subscribe(params => {
         this.currentBrandName = params.get('car-brand');
-        this.brandsService.getModels(this.currentBrandName).subscribe(response => {
+        this.brandsService.getBrand(this.currentBrandName).subscribe(response => {
           this.models = response.modelList;
-          console.log(this.models);
+          console.log(response);
       });
   });
 }
