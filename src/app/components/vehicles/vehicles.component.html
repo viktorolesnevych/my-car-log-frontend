@@ -2,17 +2,17 @@
   <div class="nav-wrapper">
     <div class="breadcrumb br-container">
       <a routerLink="/" class="breadcrumb">Home</a>
-      <a routerLink="/{{currentBrand.name}}" class="breadcrumb">{{currentBrand.name}}</a>
-      <a routerLink="/{{currentBrand.name}}/{{currentModel.name}}" class="breadcrumb">{{currentModel.name}}</a>
+      <a *ngIf="currentBrand" routerLink="/{{currentBrand.name}}" class="breadcrumb">{{currentBrand.name}}</a>
+      <a *ngIf="currentBrand" routerLink="/{{currentBrand.name}}/{{currentModel.name}}" class="breadcrumb">{{currentModel.name}}</a>
     </div>
   </div>
 </nav>
-<div class="center model-img">
-  <img height="400px" src="{{currentModel.imgLink}}">
+<div *ngIf="currentModel" class="center model-img">
+  <img height="350px" src="{{currentModel.imgLink}}">
 </div>
-<div class="container">
-<div class="row">
-    <div *ngFor="let vehicle of vehicles" class="card col s4">
+<h3 class="center">List of member's vehicles</h3>
+<div class="row vehicles">
+    <div *ngFor="let vehicle of vehicles" class="card col s3 offset-m1">
       <div class="card-image waves-effect waves-block waves-light">
         <img height="230px" class="activator" src="{{vehicle.imgLink}}">
       </div>
@@ -26,6 +26,5 @@
         <p>Description: {{vehicle.description}}</p>
       </div>
     </div>
-</div>
 </div>
 
