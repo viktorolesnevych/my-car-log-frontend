@@ -1,22 +1,17 @@
 <div class="container">
   <h2 class="center">{{currentBrandName}}</h2>
-  <h4 *ngFor="let model of models">{{model.img_link}}</h4>
+</div>
   <div class="row">
-    <div class="col s12 m7">
-      <div  *ngFor="let model of models" class="card">
+    <div *ngFor="let model of models" class="col s3">
+      <div class="card">
         <div class="card-image">
-          <img src="{{model.img_link}}">
-          <span class="card-title">Card Title</span>
-        </div>
-        <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information.
-            I am convenient because I require little markup to use effectively.</p>
+          <img src="{{model.imgLink}}">
+          <span class="card-title">{{currentBrandName}} {{model.name}}</span>
         </div>
         <div class="card-action">
-          <a href="#">This is a link</a>
+          <a href="#">See vehicles</a>
         </div>
       </div>
     </div>
   </div>
-</div>
 
