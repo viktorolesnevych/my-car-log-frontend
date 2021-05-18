@@ -22,6 +22,7 @@ export class VehiclesComponent implements OnInit {
         this.brandsService.getBrand(params.get('car-brand')).subscribe((response: Brand) => {
           this.currentBrand = response;
           this.currentModel = this.currentBrand.modelList.find(model => model.name === params.get('model'));
+          console.log(this.currentModel.vehicleList);
           this.vehicles = this.currentModel.vehicleList;
         });
       });

@@ -12,6 +12,7 @@ export class BrandsComponent implements OnInit {
   constructor(private brandsService: BrandsService) { }
   ngOnInit(): void {
     this.brandsService.getBrands().subscribe(response => {
+      console.log(response);
       this.brands = response;
       this.brands.sort((a: Brand, b: Brand) => a.name.localeCompare(b.name));
     });
