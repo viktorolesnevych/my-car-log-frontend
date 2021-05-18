@@ -7,13 +7,15 @@ import { LoginComponent } from './components/authorization/login//login.componen
 import { SignupComponent } from './components/authorization/signup/signup.component';
 import {HttpClientModule} from '@angular/common/http';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { BrandsComponent } from './components/brands/brands.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    HomePageComponent
+    HomePageComponent,
+    BrandsComponent
   ],
   imports: [
     BrowserModule,
