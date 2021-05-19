@@ -4,6 +4,10 @@
   <div class="center">
     <img height="400px" src="{{vehicle.imgLink}}">
   </div>
+  <div *ngIf="vehicle.user_id === currentUserId" class="center">
+  <a class="waves-effect waves-light btn-small">Update</a>
+  <a class="waves-effect waves-light btn-small">Delete</a>
+  </div>
   <div class="description">
     <h3>Description</h3>
     <hr>

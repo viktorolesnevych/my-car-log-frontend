@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {VehiclesService} from '../../services/vehicles/vehicles.service';
 import {ActivatedRoute} from '@angular/router';
 import {Vehicle} from '../../models/Vehicle';
+import {UserService} from "../../services/user/user.service";
+import {User} from "../../models/User";
 
 @Component({
   selector: 'app-vehicle',
@@ -13,7 +15,8 @@ export class VehicleComponent implements OnInit {
   brandName: string;
   modelName: string;
   showComments: boolean[];
-  constructor(private route: ActivatedRoute, private vehicleService: VehiclesService) { }
+  currentUserId: number;
+  constructor(private route: ActivatedRoute, private vehicleService: VehiclesService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.route.paramMap
@@ -28,6 +31,16 @@ export class VehicleComponent implements OnInit {
           .subscribe(parentParams =>  this.brandName = parentParams.get('car-brand'));
         this.modelName = params.get('model');
       });
+    if (localStorage.getItem('currentUser')) {
+      this.userService.getUsers().subscribe((response: User[]) => {
+        response.forEach((user: User) => {
+          if (user.emailAddress === localStorage.getItem('currentUser')){
+            this.currentUserId = user.id;
+            console.log(this.currentUserId);
+          }
+        });
+      });
+    }
   }
 
   isShown(i: number): void{
