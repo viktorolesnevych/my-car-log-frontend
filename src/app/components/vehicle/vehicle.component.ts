@@ -18,8 +18,10 @@ export class VehicleComponent implements OnInit {
     this.route.paramMap
       .subscribe(params => {
         this.vehicleService.getVehicleById(parseInt(params.get('vehicle-id'), 10))
-          .subscribe((response: Vehicle) =>
-          this.vehicle = response);
+          .subscribe((response: Vehicle) =>{
+          this.vehicle = response;
+          console.log(this.vehicle);
+          });
         this.route.parent.paramMap
           .subscribe(parentParams =>  this.brandName = parentParams.get('car-brand'));
         this.modelName = params.get('model');

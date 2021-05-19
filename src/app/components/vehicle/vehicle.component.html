@@ -13,5 +13,18 @@
     <h3>Logs</h3>
     <hr>
   </div>
+  <div *ngFor="let log of vehicle.logList" class="card horizontal">
+    <div class="card-image">
+      <img height="150px" src="{{log.imgLink}}">
+    </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <p>Lorem</p>
+      </div>
+      <div class="card-action">
+        <a>Link</a>
+      </div>
+    </div>
+  </div>
 </div>
 
