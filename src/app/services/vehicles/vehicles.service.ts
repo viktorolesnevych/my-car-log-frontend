@@ -7,10 +7,10 @@ import {Vehicle} from '../../models/Vehicle';
   providedIn: 'root'
 })
 export class VehiclesService {
-  apiUrl = 'http://localhost:9092/api/';
+  apiUrl = 'https://mycarlog.herokuapp.com/api';
   constructor(private http: HttpClient) { }
 
   getVehicleById(id: number): Observable<Vehicle>{
-    return this.http.get<Vehicle>(`${this.apiUrl}vehicles/${id}`);
+    return this.http.get<Vehicle>(`${this.apiUrl}/vehicles/${id}`);
   }
 }

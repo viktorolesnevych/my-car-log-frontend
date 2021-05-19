@@ -8,7 +8,7 @@ import {Model} from '../../models/Model';
   providedIn: 'root'
 })
 export class BrandsService {
-  apiUrl = 'http://localhost:9092/api/brands';
+  apiUrl = 'https://mycarlog.herokuapp.com/api/brands';
   constructor(private http: HttpClient) { }
 
   getBrands(): Observable<Brand[]>{

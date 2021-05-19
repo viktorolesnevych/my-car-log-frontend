@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
-import {BehaviorSubject, Subject} from "rxjs";
+import {BehaviorSubject, Observable, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class UserService {
   errorText: string;
   navSubject = new Subject();
   searchSubject = new BehaviorSubject('');
-  apiUrl = 'http://localhost:9092';
+  apiUrl = 'https://mycarlog.herokuapp.com';
 
   constructor(private http: HttpClient, private router: Router) {
     if (localStorage.getItem('currentUser')) {
@@ -52,5 +52,9 @@ export class UserService {
     this.currentUser = '';
     this.searchSubject.next(this.currentUser);
     this.router.navigate(['/login']);
+  }
+
+  getUsers(): Observable<any>{
+    return this.http.get(`${this.apiUrl}/auth/users`);
   }
 }
