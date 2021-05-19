@@ -13,6 +13,7 @@ import { VehiclesComponent } from './components/vehicles/vehicles.component';
 import { VehicleComponent } from './components/vehicle/vehicle.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { CommentsComponent } from './components/comments/comments.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CommentsComponent } from './components/comments/comments.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
