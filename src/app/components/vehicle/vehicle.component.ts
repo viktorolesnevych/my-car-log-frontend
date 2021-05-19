@@ -29,4 +29,8 @@ export class VehicleComponent implements OnInit {
         this.modelName = params.get('model');
       });
   }
+
+  isShown(i: number): void{
+    this.showComments[i] = !this.showComments[i];
+  }
 }

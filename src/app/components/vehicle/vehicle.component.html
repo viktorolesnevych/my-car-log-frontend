@@ -16,7 +16,7 @@
   <div *ngFor="let log of vehicle.logList, let i = index" class="log">
   <div class="card horizontal">
     <div class="card-image">
-      <img height="150px" src="{{log.imgLink}}">
+      <img height="200px" src="{{log.imgLink}}">
     </div>
     <div class="card-stacked">
       <div class="card-content">
@@ -24,11 +24,11 @@
         <p>{{log.content}}</p>
       </div>
       <div class="card-action">
-        <a>See Comments</a>
+        <a (click)="isShown(i)">See Comments</a>
       </div>
     </div>
   </div>
-  <app-comments *ngIf="showComments[i]" ng[log]="log"></app-comments>
+  <app-comments *ngIf="showComments[i]" [log]="log"></app-comments>
 </div>
 </div>
 
