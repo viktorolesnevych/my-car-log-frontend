@@ -3,7 +3,8 @@
     <div class="nav-wrapper">
       <a routerLink="/" class="brand-logo"><img height="60px" src="assets/logo.png"></a>
       <ul class="right">
-        <li><a routerLink="/login">Login</a></li>
+        <li *ngIf="!currentUser"><a routerLink="/login">Login</a></li>
+        <li *ngIf="currentUser"><a (click)="logout()">Logout</a></li>
         <li><a >About</a></li>
       </ul>
     </div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {User} from './models/User';
+import {UserService} from './services/user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +8,13 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private http: HttpClient) {
+  currentUser: User;
+  constructor(private userService: UserService) {
+    this.userService.searchSubject.subscribe((currentUser: User) => {
+      this.currentUser = currentUser;
+    });
   }
-  getBrands(): any {
-    return this.http.get('http://localhost:9092/api/brands').subscribe(response =>
-    console.log(response)); // returns a subscription
+  logout(): void {
+    this.userService.logoutUser();
   }
 }

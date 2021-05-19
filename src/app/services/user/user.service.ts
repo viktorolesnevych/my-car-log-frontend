@@ -41,4 +41,11 @@ export class UserService {
         this.searchSubject.next(this.currentUser);
       }, err => console.log(err));
   }
+  logoutUser(): void {
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('token');
+    this.currentUser = '';
+    this.searchSubject.next(this.currentUser);
+    this.router.navigate(['/login']);
+  }
 }
