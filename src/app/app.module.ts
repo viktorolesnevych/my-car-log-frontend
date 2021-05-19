@@ -12,6 +12,7 @@ import { ModelsComponent } from './components/models/models.component';
 import { VehiclesComponent } from './components/vehicles/vehicles.component';
 import { VehicleComponent } from './components/vehicle/vehicle.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
+import { CommentsComponent } from './components/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MainPageComponent } from './components/main-page/main-page.component';
     ModelsComponent,
     VehiclesComponent,
     VehicleComponent,
-    MainPageComponent
+    MainPageComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,
