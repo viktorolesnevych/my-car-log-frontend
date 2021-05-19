@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
-import {Subject} from "rxjs";
+import {BehaviorSubject, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +11,15 @@ export class UserService {
   currentUser: string;
   errorText: string;
   navSubject = new Subject();
-  searchSubject = new Subject();
+  searchSubject = new BehaviorSubject('');
   apiUrl = 'http://localhost:9092';
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
+    if (localStorage.getItem('currentUser')) {
+      this.searchSubject.next(localStorage.getItem('currentUser'));
+      console.log(this.searchSubject);
+    }
+  }
 
   registerUser(newUser): void {
     this.http

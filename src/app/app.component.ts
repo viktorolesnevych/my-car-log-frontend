@@ -8,11 +8,13 @@ import {UserService} from './services/user/user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  currentUser: User;
+  currentUser: string;
   constructor(private userService: UserService) {
-    this.userService.searchSubject.subscribe((currentUser: User) => {
-      this.currentUser = currentUser;
-    });
+  }
+  ngOnInit(): void {
+  this.userService.searchSubject.subscribe((currentUser: string) => {
+    this.currentUser = currentUser;
+  });
   }
   logout(): void {
     this.userService.logoutUser();
