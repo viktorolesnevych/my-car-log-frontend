@@ -11,6 +11,7 @@ import { BrandsComponent } from './components/brands/brands.component';
 import { ModelsComponent } from './components/models/models.component';
 import { VehiclesComponent } from './components/vehicles/vehicles.component';
 import { VehicleComponent } from './components/vehicle/vehicle.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { VehicleComponent } from './components/vehicle/vehicle.component';
     BrandsComponent,
     ModelsComponent,
     VehiclesComponent,
-    VehicleComponent
+    VehicleComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,

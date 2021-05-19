@@ -6,6 +6,7 @@ import {HomePageComponent} from './components/home-page/home-page.component';
 import {ModelsComponent} from './components/models/models.component';
 import {VehiclesComponent} from './components/vehicles/vehicles.component';
 import {VehicleComponent} from './components/vehicle/vehicle.component';
+import {MainPageComponent} from "./components/main-page/main-page.component";
 
 const routes: Routes = [
   {
@@ -22,16 +23,21 @@ const routes: Routes = [
   },
   {
     path: ':car-brand',
-    component: ModelsComponent
-  },
-  {
-    path: ':car-brand/:model',
-    component: VehiclesComponent
-  },
-  {
-    path: ':car-brand/:model/:vehicle-id',
-    component: VehicleComponent
-  }
+    component: MainPageComponent,
+    children: [
+      {
+        path: '',
+        component: ModelsComponent
+      },
+      {
+        path: ':model',
+        component: VehiclesComponent
+      },
+      {
+      path: ':model/:vehicle-id',
+      component: VehicleComponent
+      }
+  ]}
 ];
 
 @NgModule({

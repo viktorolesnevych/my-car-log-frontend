@@ -1,0 +1,11 @@
+<nav>
+  <div class="nav-wrapper">
+    <div class="breadcrumb br-container">
+      <a routerLink="/" class="breadcrumb">Home</a>
+      <a *ngIf="currentBrandName" routerLink="/{{currentBrandName}}" class="breadcrumb">{{currentBrandName}}</a>
+      <a *ngIf="currentModelName" routerLink="/{{currentBrandName}}/{{currentModelName}}"
+         class="breadcrumb">{{currentModelName}}</a>
+    </div>
+  </div>
+</nav>
+<router-outlet (activate)="onActivate($event)"></router-outlet>

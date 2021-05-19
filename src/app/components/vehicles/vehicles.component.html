@@ -1,12 +1,3 @@
-<nav>
-  <div class="nav-wrapper">
-    <div class="breadcrumb br-container">
-      <a routerLink="/" class="breadcrumb">Home</a>
-      <a *ngIf="currentBrand" routerLink="/{{currentBrand.name}}" class="breadcrumb">{{currentBrand.name}}</a>
-      <a *ngIf="currentBrand" routerLink="/{{currentBrand.name}}/{{currentModel.name}}" class="breadcrumb">{{currentModel.name}}</a>
-    </div>
-  </div>
-</nav>
 <div *ngIf="currentModel" class="center model-img">
   <img height="350px" src="{{currentModel.imgLink}}">
 </div>
