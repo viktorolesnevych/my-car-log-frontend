@@ -17,12 +17,12 @@ export class VehicleComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap
       .subscribe(params => {
-        console.log(params.get('vehicle-id'));
-        this.vehicleService.getVehicleById(parseInt(params.get('vehicle-id'), 10)).subscribe((response: Vehicle) =>
+        this.vehicleService.getVehicleById(parseInt(params.get('vehicle-id'), 10))
+          .subscribe((response: Vehicle) =>
           this.vehicle = response);
-        this.brandName = params.get('car-brand');
+        this.route.parent.paramMap
+          .subscribe(parentParams =>  this.brandName = parentParams.get('car-brand'));
         this.modelName = params.get('model');
       });
   }
-
 }

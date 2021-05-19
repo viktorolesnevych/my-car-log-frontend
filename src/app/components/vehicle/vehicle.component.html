@@ -1,3 +1,17 @@
-<p>{{brandName}}</p>
-<p>{{modelName}}</p>
-<p>{{vehicle.nickName}}</p>
+<div *ngIf="vehicle" class="container-fluid">
+  <h5 class="center"> - {{brandName}} {{modelName}} - </h5>
+  <h3 class="center"><strong>{{vehicle.nickName}}</strong></h3>
+  <div class="center">
+    <img height="400px" src="{{vehicle.imgLink}}">
+  </div>
+  <div class="description">
+    <h3>Description</h3>
+    <hr>
+    <p>{{vehicle.description}}</p>
+  </div>
+  <div class="description">
+    <h3>Logs</h3>
+    <hr>
+  </div>
+</div>
+

@@ -4,6 +4,9 @@
 .br-container{
   margin-left: 30px;
 }
+.card-image{
+  background-color: black;
+}
 .vehicles{
   margin-left: -120px;
 }
