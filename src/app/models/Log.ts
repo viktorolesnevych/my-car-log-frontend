@@ -1,4 +1,4 @@
-export interface Vehicle{
+export interface Log{
   id?: number;
   vehicle_id: number;
   title: string;
