@@ -16,6 +16,15 @@ export class UserService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
+  registerUser(newUser): void {
+    this.http
+      .post(`${this.apiUrl}/auth/users/register`, newUser)
+      .subscribe(response => {
+        localStorage.removeItem('currentError');
+        this.loginUser(newUser);
+      }, err => console.log(err));
+  }
+
   loginUser(user): void {
     console.log(user);
     this.http
