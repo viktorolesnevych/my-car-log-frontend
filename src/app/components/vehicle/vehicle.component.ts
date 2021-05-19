@@ -12,6 +12,7 @@ export class VehicleComponent implements OnInit {
   vehicle: Vehicle;
   brandName: string;
   modelName: string;
+  showComments: boolean[];
   constructor(private route: ActivatedRoute, private vehicleService: VehiclesService) { }
 
   ngOnInit(): void {
@@ -20,7 +21,8 @@ export class VehicleComponent implements OnInit {
         this.vehicleService.getVehicleById(parseInt(params.get('vehicle-id'), 10))
           .subscribe((response: Vehicle) => {
           this.vehicle = response;
-          console.log(this.vehicle);
+          this.showComments = new Array(this.vehicle.logList.length);
+          this.showComments.forEach(value => value = false);
           });
         this.route.parent.paramMap
           .subscribe(parentParams =>  this.brandName = parentParams.get('car-brand'));

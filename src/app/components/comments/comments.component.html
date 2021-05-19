@@ -1,9 +1,9 @@
-<ul class="collection">
-  <li class="collection-item avatar">
+<ul *ngIf="log.commentList" class="collection">
+  <li *ngFor="let comment of log.commentList" class="collection-item avatar">
     <i class="material-icons circle">folder</i>
-    <span class="title">Title</span>
-    <p>First Line <br>
-      Second Line
+    <span class="title">{{comment.id}}</span>
+    <p>{{comment.textContent}}<br>
+      <span class="grey-text lighten-3">{{comment.dateCreated}}</span>
     </p>
   </li>
 </ul>
