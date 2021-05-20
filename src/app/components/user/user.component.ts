@@ -21,7 +21,7 @@ export class UserComponent implements OnInit {
   imgLink: string;
   description: string;
 
-
+  isFormShown = [false, 'Vehicle'];
 
   constructor(private userService: UserService, private brandsService: BrandsService,
               private vehiclesService: VehiclesService) { }
@@ -36,6 +36,16 @@ export class UserComponent implements OnInit {
       });
     });
     this.brandsService.getBrands().subscribe(brands => this.brands = brands);
+  }
+  showAddForm(): void{
+    if (!this.isFormShown[0]){
+      this.isFormShown[0] = true;
+      this.isFormShown[1] = 'Hide';
+    }
+    else {
+      this.isFormShown[0] = false;
+      this.isFormShown[1] = 'Vehicle';
+    }
   }
 
   addVehicle(): void{
@@ -53,4 +63,5 @@ export class UserComponent implements OnInit {
       }
     }
   }
+
 }

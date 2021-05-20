@@ -11,8 +11,8 @@
     <a routerLink="/{{vehicle.brand_name}}/{{vehicle.model_name}}/{{vehicle.id}}" class="secondary-content"><span class="badge">{{vehicle.logList.length}} logs</span></a>
   </li>
   </ul>
-  <a (click)="showAddForm()"class="waves-effect waves-light btn-large"><i class="material-icons right">add</i>Vehicle</a>
-  <form>
+  <a (click)="showAddForm()"class="waves-effect waves-light btn-large"><i *ngIf="!isFormShown[0]" class="material-icons right">add</i>{{isFormShown[1]}}</a>
+  <form *ngIf="isFormShown[0]">
     <div class="row">
       <div class="input-field col s4">
         <input [(ngModel)]="brand" name="brand" id="brand" type="text" class="validate">
