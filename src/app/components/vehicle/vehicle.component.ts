@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Vehicle} from '../../models/Vehicle';
 import {UserService} from "../../services/user/user.service";
 import {User} from "../../models/User";
-import {BehaviorSubject} from "rxjs";
+import {Log} from "../../models/Log";
 
 @Component({
   selector: 'app-vehicle',
@@ -17,7 +17,11 @@ export class VehicleComponent implements OnInit {
   modelName: string;
   showComments: boolean[];
   currentUserId: number;
+  title: string;
+  content: string;
+  imgLink: string;
 
+  errorText = '';
   showAddLog = false;
   confirmDelete = false;
   constructor(private route: ActivatedRoute, private vehicleService: VehiclesService, private userService: UserService,
@@ -67,5 +71,28 @@ export class VehicleComponent implements OnInit {
         this.vehicleService.vehicleToDelete.next(this.vehicle.id);
       });
     this.router.navigate([`/${this.vehicle.brand_name}/${this.vehicle.model_name}`]);
+  }
+
+  addLog(): void{
+    let newLog;
+    if (this.title && this.content && this.imgLink) {
+      newLog = {
+        title: this.title,
+       content: this.content,
+        imgLink: this.imgLink
+      };
+      console.log(newLog);
+      this.vehicleService.addLog(this.vehicle.id, newLog).subscribe((response: Log) => {
+        this.vehicle.logList.unshift(response);
+        this.title = '';
+        this.imgLink = '';
+        this.content = '';
+        this.changeShowAddLogs();
+      });
+      this.errorText = '';
+    }
+    else{
+      this.errorText = 'Check the inputs and try again!';
+    }
   }
 }

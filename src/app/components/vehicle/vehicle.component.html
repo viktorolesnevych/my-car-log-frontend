@@ -18,8 +18,10 @@
   </div>
   <div class="description">
     <h3>Logs
+      <div *ngIf="vehicle.user_id === currentUserId" >
       <i *ngIf="!showAddLog" (click)="changeShowAddLogs()" class="small material-icons icon-color-add">add_circle</i>
       <i *ngIf="showAddLog" (click)="changeShowAddLogs()" class="small material-icons icon-color-hide">expand_less</i>
+      </div>
     </h3>
     <div *ngIf="showAddLog" class="add-log">
       <form>
@@ -29,7 +31,7 @@
             <label for="title">Title</label>
           </div>
           <div class="input-field col s4">
-            <a class="waves-effect waves-light btn">Add Log</a>
+            <a (click)="addLog()" class="waves-effect waves-light btn">Add Log</a>
           </div>
           </div>
         <div class="row">
@@ -37,6 +39,15 @@
             <input [(ngModel)]="content" name="content" id="content" type="text" class="validate">
             <label for="content">Content</label>
           </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s10">
+            <input [(ngModel)]="imgLink" name="img" id="img" type="text" class="validate">
+            <label for="img">Image Link</label>
+          </div>
+        </div>
+        <div class="input-field col s6">
+          <p *ngIf="errorText" class="center-align red-text">{{errorText}}</p>
         </div>
       </form>
     </div>

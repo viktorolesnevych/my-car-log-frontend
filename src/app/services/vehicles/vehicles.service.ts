@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Vehicle} from '../../models/Vehicle';
+import {Log} from "../../models/Log";
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,15 @@ export class VehiclesService {
     const token = this.getToken();
     const requestOptions = this.getRequestOptions(token);
     return this.http.delete(`${this.apiUrl}/brands/${brandId}/models/${modelId}/vehicles/${vehicleId}`, requestOptions);
+  }
+
+  addLog(vehicleId: number, newLog: Log): Observable<any>{
+    const token = this.getToken();
+    const requestOptions = this.getRequestOptions(token);
+    console.log(requestOptions);
+    console.log(vehicleId);
+    console.log(newLog);
+    return this.http.post(`${this.apiUrl}/vehicle/${vehicleId}/logs`, newLog, requestOptions);
   }
 
   getToken(): string{
