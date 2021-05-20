@@ -16,6 +16,8 @@ export class VehicleComponent implements OnInit {
   modelName: string;
   showComments: boolean[];
   currentUserId: number;
+
+  confirmDelete = false;
   constructor(private route: ActivatedRoute, private vehicleService: VehiclesService, private userService: UserService) { }
 
   ngOnInit(): void {
@@ -45,5 +47,13 @@ export class VehicleComponent implements OnInit {
 
   isShown(i: number): void{
     this.showComments[i] = !this.showComments[i];
+  }
+
+  confirmDeleteVehicle(): void{
+    this.confirmDelete = !this.confirmDelete;
+  }
+
+  deleteVehicle(){
+
   }
 }

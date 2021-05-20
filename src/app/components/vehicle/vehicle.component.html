@@ -6,7 +6,10 @@
   </div>
   <div *ngIf="vehicle.user_id === currentUserId" class="center">
   <a class="waves-effect waves-light btn-small">Update</a>
-  <a class="waves-effect waves-light btn-small">Delete</a>
+  <a (click)="confirmDeleteVehicle()" class="waves-effect waves-light btn-small">Delete</a>
+  </div>
+  <div *ngIf="confirmDelete" class="confirm center">
+    <p><b>Please, confirm delete:</b><br><a (click)="deleteVehicle()" class="btn-small orange">Delete</a></p>
   </div>
   <div class="description">
     <h3>Description</h3>

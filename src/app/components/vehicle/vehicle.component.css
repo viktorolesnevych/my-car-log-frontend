@@ -5,3 +5,10 @@
 .log{
   margin-left: 20px;
 }
+.confirm{
+  margin-left: 600px;
+  margin-right: 600px;
+  padding-bottom: 2px;
+  background-color: red;
+  color: white;
+}
