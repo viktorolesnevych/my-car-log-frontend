@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Vehicle} from '../../models/Vehicle';
 import {UserService} from "../../services/user/user.service";
 import {User} from "../../models/User";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-vehicle',
@@ -56,7 +57,10 @@ export class VehicleComponent implements OnInit {
 
   deleteVehicle(): void{
     this.vehicleService.deleteVehicle(this.vehicle.brand_id, this.vehicle.model_id, this.vehicle.id)
-      .subscribe(response => console.log(response));
+      .subscribe(response => {
+        console.log(response);
+        this.vehicleService.vehicleToDelete.next(this.vehicle.id);
+      });
     this.router.navigate([`/${this.vehicle.brand_name}/${this.vehicle.model_name}`]);
   }
 }

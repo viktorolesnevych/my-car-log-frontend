@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {Vehicle} from '../../models/Vehicle';
 
 @Injectable({
@@ -8,6 +8,8 @@ import {Vehicle} from '../../models/Vehicle';
 })
 export class VehiclesService {
   apiUrl = 'https://mycarlog.herokuapp.com/api';
+  vehicleToDelete = new BehaviorSubject(0);
+
   constructor(private http: HttpClient) { }
 
   getVehicleById(id: number): Observable<Vehicle>{

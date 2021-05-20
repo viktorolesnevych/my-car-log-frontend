@@ -4,6 +4,7 @@ import {Vehicle} from '../../models/Vehicle';
 import {Brand} from '../../models/Brand';
 import {Model} from '../../models/Model';
 import {BrandsService} from '../../services/brands/brands.service';
+import {VehiclesService} from '../../services/vehicles/vehicles.service';
 
 @Component({
   selector: 'app-vehicles',
@@ -12,10 +13,11 @@ import {BrandsService} from '../../services/brands/brands.service';
 })
 export class VehiclesComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private brandsService: BrandsService) { }
+  constructor(private route: ActivatedRoute, private brandsService: BrandsService, private vehicleService: VehiclesService) { }
   currentBrand: Brand;
   currentModel: Model;
   vehicles: Vehicle[];
+  vehicleToDelete: number; // vehicle which should be deleted from view
   ngOnInit(): void {
     this.route.parent.paramMap
       .subscribe(params => {
@@ -27,8 +29,12 @@ export class VehiclesComponent implements OnInit {
               this.currentModel = this.currentBrand.modelList.find(model => model.name === paramsChild.get('model'));
               console.log(this.currentModel.vehicleList);
               this.vehicles = this.currentModel.vehicleList;
+              this.vehicleService.vehicleToDelete.subscribe(deleteId =>
+                this.vehicles = this.vehicles.filter(vehicle => vehicle.id !== deleteId));
             });
         });
       });
+  }
+  ngOnChange(): void{
   }
 }

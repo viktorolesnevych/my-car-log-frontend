@@ -10,7 +10,6 @@ export class UserService {
 
   currentUser: string;
   errorText: string;
-  navSubject = new Subject();
   searchSubject = new BehaviorSubject('');
   errorSubject = new BehaviorSubject('');
   apiUrl = 'https://mycarlog.herokuapp.com';
