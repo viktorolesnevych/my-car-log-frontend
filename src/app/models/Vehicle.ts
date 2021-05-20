@@ -1,4 +1,4 @@
-import {Log} from "./Log";
+import {Log} from './Log';
 
 export interface Vehicle{
   id?: number;
@@ -6,8 +6,8 @@ export interface Vehicle{
   model_id: number;
   user_id: number;
   nickName: string;
-  brandName: string;
-  modelName: string;
+  brand_name: string;
+  model_name: string;
   logList: Log[];
   description: string;
   color: string;

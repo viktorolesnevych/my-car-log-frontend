@@ -1,3 +1,15 @@
-<div *ngIf="user" class="container-fluid">
-  <h2 class="center">Welcome {{user.userName}}</h2>
+<div *ngIf="user" class="container-u">
+  <h2 class="center"><b>Welcome, {{user.userName | titlecase}}!</b></h2>
+  <h4>List of your vehicles</h4><hr>
+  <ul *ngFor="let vehicle of user.vehicleList" class="collection">
+  <li class="collection-item avatar">
+    <img src="{{vehicle.imgLink}}" alt="" class="circle">
+    <span class="title red-text"><b>{{vehicle.brand_name}} {{vehicle.model_name}}</b></span>
+    <p> <span class="nick-name">{{vehicle.nickName}}</span> <br>
+       {{vehicle.description}}
+    </p>
+    <a routerLink="/{{vehicle.brand_name}}/{{vehicle.model_name}}/{{vehicle.id}}" class="secondary-content"><span class="badge">{{vehicle.logList.length}} logs</span></a>
+  </li>
+  </ul>
+  <a class="waves-effect waves-light btn-large"><i class="material-icons right">add</i>Vehicle</a>
 </div>
