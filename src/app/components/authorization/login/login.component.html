@@ -30,7 +30,7 @@
           <p class="margin right-align medium-small"><a>Forgot password?</a></p>
         </div>
       </div>
-      <p class="center-align red-text">TEXT</p>
+      <p *ngIf="errorText" class="center-align red-text">{{errorText}}</p>
     </form>
   </div>
 </div>

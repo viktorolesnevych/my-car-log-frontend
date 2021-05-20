@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from "../../../services/user/user.service";
+import {UserService} from '../../../services/user/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -7,13 +7,15 @@ import {UserService} from "../../../services/user/user.service";
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  userName: string;
-  emailAddress: string;
-  password: string;
+  public userName: string;
+  public emailAddress: string;
+  public password: string;
+  public errorText: string;
 
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.errorSubject.subscribe(errorText => this.errorText = errorText);
   }
   registerUser(): void {
     const newUser = {userName: this.userName, emailAddress: this.emailAddress, password: this.password};

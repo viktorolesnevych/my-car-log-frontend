@@ -5,6 +5,7 @@ import {BrandsService} from '../../services/brands/brands.service';
 import {Brand} from '../../models/Brand';
 import {Model} from '../../models/Model';
 import {VehiclesService} from '../../services/vehicles/vehicles.service';
+import {Vehicle} from "../../models/Vehicle";
 
 @Component({
   selector: 'app-user',
@@ -59,7 +60,11 @@ export class UserComponent implements OnInit {
     };
     if (newVehicle && brand && model) {
       if (newVehicle.nickName && newVehicle.description && newVehicle.color && brand.id && model.id) {
-        this.vehiclesService.addVehicle(brand.id, model.id, newVehicle).subscribe(response => console.log(response));
+        this.vehiclesService.addVehicle(brand.id, model.id, newVehicle).subscribe((response: Vehicle) => {
+          console.log(response);
+          this.user.vehicleList.push(response);
+          this.showAddForm();
+        });
       }
     }
   }

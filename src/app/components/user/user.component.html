@@ -8,7 +8,8 @@
     <p> <span class="nick-name">{{vehicle.nickName}}</span> <br>
        {{vehicle.description}}
     </p>
-    <a routerLink="/{{vehicle.brand_name}}/{{vehicle.model_name}}/{{vehicle.id}}" class="secondary-content"><span class="badge">{{vehicle.logList.length}} logs</span></a>
+    <a routerLink="/{{vehicle.brand_name}}/{{vehicle.model_name}}/{{vehicle.id}}" class="secondary-content"><span *ngIf="vehicle.logList else zero" class="badge">{{vehicle.logList.length}} logs
+    </span><ng-template #zero><span class="badge">0 logs</span> </ng-template></a>
   </li>
   </ul>
   <a (click)="showAddForm()"class="waves-effect waves-light btn-large"><i *ngIf="!isFormShown[0]" class="material-icons right">add</i>{{isFormShown[1]}}</a>
