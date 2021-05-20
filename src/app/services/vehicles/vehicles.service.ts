@@ -23,7 +23,7 @@ export class VehiclesService {
   deleteVehicle(brandId: number, modelId: number, vehicleId: number): Observable<any>{
     const token = this.getToken();
     const requestOptions = this.getRequestOptions(token);
-    return this.http.delete(`${this.apiUrl}/brands/${brandId}/models/${modelId}/vehicles/${vehicleId}`);
+    return this.http.delete(`${this.apiUrl}/brands/${brandId}/models/${modelId}/vehicles/${vehicleId}`, requestOptions);
   }
 
   getToken(): string{

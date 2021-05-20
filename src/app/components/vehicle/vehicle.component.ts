@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {VehiclesService} from '../../services/vehicles/vehicles.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Vehicle} from '../../models/Vehicle';
 import {UserService} from "../../services/user/user.service";
 import {User} from "../../models/User";
@@ -18,7 +18,8 @@ export class VehicleComponent implements OnInit {
   currentUserId: number;
 
   confirmDelete = false;
-  constructor(private route: ActivatedRoute, private vehicleService: VehiclesService, private userService: UserService) { }
+  constructor(private route: ActivatedRoute, private vehicleService: VehiclesService, private userService: UserService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap
@@ -53,7 +54,9 @@ export class VehicleComponent implements OnInit {
     this.confirmDelete = !this.confirmDelete;
   }
 
-  deleteVehicle(){
-
+  deleteVehicle(): void{
+    this.vehicleService.deleteVehicle(this.vehicle.brand_id, this.vehicle.model_id, this.vehicle.id)
+      .subscribe(response => console.log(response));
+    this.router.navigate([`/${this.vehicle.brand_name}/${this.vehicle.model_name}`]);
   }
 }

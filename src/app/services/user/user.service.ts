@@ -42,8 +42,6 @@ export class UserService {
         this.errorSubject.next('');
         this.router.navigate(['/']);
         this.currentUser = user.emailAddress;
-        // this.navSubject.next(this.currentUser);
-       // this.searchSubject = new BehaviorSubject(this.currentUser);
         this.searchSubject.next(this.currentUser);
       }, err => this.errorSubject.next(this.getAuthError(err)));
   }
