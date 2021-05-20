@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from "../../services/user/user.service";
-import {User} from "../../models/User";
-import {BrandsService} from "../../services/brands/brands.service";
-import {Brand} from "../../models/Brand";
-import {Model} from "../../models/Model";
+import {UserService} from '../../services/user/user.service';
+import {User} from '../../models/User';
+import {BrandsService} from '../../services/brands/brands.service';
+import {Brand} from '../../models/Brand';
+import {Model} from '../../models/Model';
+import {VehiclesService} from '../../services/vehicles/vehicles.service';
 
 @Component({
   selector: 'app-user',
@@ -17,8 +18,13 @@ export class UserComponent implements OnInit {
   model: string;
   color: string;
   nickName: string;
+  imgLink: string;
   description: string;
-  constructor(private userService: UserService, private brandsService: BrandsService) { }
+
+
+
+  constructor(private userService: UserService, private brandsService: BrandsService,
+              private vehiclesService: VehiclesService) { }
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe(users => {
@@ -35,7 +41,16 @@ export class UserComponent implements OnInit {
   addVehicle(): void{
     const brand: Brand = this.brands.find(brandVar => brandVar.name === this.brand);
     const model: Model = brand.modelList.find(modelVar => modelVar.name === this.model);
-    console.log(brand);
-    console.log(model);
+    const newVehicle = {
+      color: this.color,
+      nickName: this.nickName,
+      imgLink: this.imgLink,
+      description: this.description
+    };
+    if (newVehicle && brand && model) {
+      if (newVehicle.nickName && newVehicle.description && newVehicle.color && brand.id && model.id) {
+        this.vehiclesService.addVehicle(brand.id, model.id, newVehicle).subscribe(response => console.log(response));
+      }
+    }
   }
 }
