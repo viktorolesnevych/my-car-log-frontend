@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../services/user/user.service";
 import {User} from "../../models/User";
+import {BrandsService} from "../../services/brands/brands.service";
+import {Brand} from "../../models/Brand";
+import {Model} from "../../models/Model";
 
 @Component({
   selector: 'app-user',
@@ -9,12 +12,13 @@ import {User} from "../../models/User";
 })
 export class UserComponent implements OnInit {
   user: User;
+  brands: Brand[];
   brand: string;
   model: string;
   color: string;
   nickName: string;
   description: string;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private brandsService: BrandsService) { }
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe(users => {
@@ -25,7 +29,13 @@ export class UserComponent implements OnInit {
         }
       });
     });
+    this.brandsService.getBrands().subscribe(brands => this.brands = brands);
   }
 
-  addVehicle(){}
+  addVehicle(): void{
+    const brand: Brand = this.brands.find(brandVar => brandVar.name === this.brand);
+    const model: Model = brand.modelList.find(modelVar => modelVar.name === this.model);
+    console.log(brand);
+    console.log(model);
+  }
 }
