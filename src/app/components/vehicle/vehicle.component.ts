@@ -83,7 +83,7 @@ export class VehicleComponent implements OnInit {
       };
       console.log(newLog);
       this.vehicleService.addLog(this.vehicle.id, newLog).subscribe((response: Log) => {
-        this.vehicle.logList.unshift(response);
+        this.vehicle.logList.push(response);
         this.title = '';
         this.imgLink = '';
         this.content = '';

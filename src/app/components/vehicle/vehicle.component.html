@@ -53,11 +53,13 @@
     </div>
     <hr>
   </div>
-  <div *ngFor="let log of vehicle.logList, let i = index" class="log">
+  <div *ngFor="let log of vehicle.logList.reverse(), let i = index" class="log">
   <div class="card horizontal">
+    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
     <div class="card-image">
       <img height="200px" src="{{log.imgLink}}">
     </div>
+
     <div class="card-stacked">
       <div class="card-content">
         <h5><i>{{log.title}}</i></h5>
