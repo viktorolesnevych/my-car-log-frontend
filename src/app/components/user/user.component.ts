@@ -9,6 +9,11 @@ import {User} from "../../models/User";
 })
 export class UserComponent implements OnInit {
   user: User;
+  brand: string;
+  model: string;
+  color: string;
+  nickName: string;
+  description: string;
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
@@ -22,4 +27,5 @@ export class UserComponent implements OnInit {
     });
   }
 
+  addVehicle(){}
 }

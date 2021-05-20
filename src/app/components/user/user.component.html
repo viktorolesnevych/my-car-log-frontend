@@ -12,4 +12,36 @@
   </li>
   </ul>
   <a class="waves-effect waves-light btn-large"><i class="material-icons right">add</i>Vehicle</a>
+  <form>
+    <div class="row">
+      <div class="input-field col s4">
+        <input [(ngModel)]="brand" id="brand" type="text" class="validate">
+        <label for="brand">Brand</label>
+      </div>
+      <div class="input-field col s4">
+        <input [(ngModel)]="model" id="model" type="text" class="validate">
+        <label for="model">Model</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s4">
+        <input [(ngModel)]="color" id="color" type="text" class="validate">
+        <label for="color">Color</label>
+      </div>
+      <div class="input-field col s4">
+        <input [(ngModel)]="nickName" id="nick" type="text" class="validate">
+        <label for="nick">Nick name</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input [(ngModel)]="description" id="description" type="text" class="validate">
+        <label for="description">Description</label>
+      </div>
+      <div class="input-field col s2">
+        <a (click)="addVehicle()" class="btn">Add</a>
+      </div>
+    </div>
+  </form>
 </div>
+
