@@ -17,7 +17,29 @@
     <p>{{vehicle.description}}</p>
   </div>
   <div class="description">
-    <h3>Logs</h3>
+    <h3>Logs
+      <i *ngIf="!showAddLog" (click)="changeShowAddLogs()" class="small material-icons icon-color-add">add_circle</i>
+      <i *ngIf="showAddLog" (click)="changeShowAddLogs()" class="small material-icons icon-color-hide">expand_less</i>
+    </h3>
+    <div *ngIf="showAddLog" class="add-log">
+      <form>
+        <div class="row">
+          <div class="input-field col s4">
+            <input [(ngModel)]="title" name="title" id="title" type="text" class="validate">
+            <label for="title">Title</label>
+          </div>
+          <div class="input-field col s4">
+            <a class="waves-effect waves-light btn">Add Log</a>
+          </div>
+          </div>
+        <div class="row">
+          <div class="input-field col s10">
+            <input [(ngModel)]="content" name="content" id="content" type="text" class="validate">
+            <label for="content">Content</label>
+          </div>
+        </div>
+      </form>
+    </div>
     <hr>
   </div>
   <div *ngFor="let log of vehicle.logList, let i = index" class="log">

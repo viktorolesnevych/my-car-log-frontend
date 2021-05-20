@@ -18,6 +18,7 @@ export class VehicleComponent implements OnInit {
   showComments: boolean[];
   currentUserId: number;
 
+  showAddLog = false;
   confirmDelete = false;
   constructor(private route: ActivatedRoute, private vehicleService: VehiclesService, private userService: UserService,
               private router: Router) { }
@@ -53,6 +54,10 @@ export class VehicleComponent implements OnInit {
 
   confirmDeleteVehicle(): void{
     this.confirmDelete = !this.confirmDelete;
+  }
+
+  changeShowAddLogs(): void{
+    this.showAddLog = !this.showAddLog;
   }
 
   deleteVehicle(): void{

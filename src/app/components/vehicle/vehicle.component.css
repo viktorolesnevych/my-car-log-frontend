@@ -12,3 +12,12 @@
   background-color: red;
   color: white;
 }
+.icon-color-add{
+  color: #26A69A;
+}
+.icon-color-hide{
+  color: red;
+}
+.material-icons{
+  cursor: pointer;
+}
