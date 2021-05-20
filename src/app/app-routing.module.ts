@@ -6,7 +6,8 @@ import {HomePageComponent} from './components/home-page/home-page.component';
 import {ModelsComponent} from './components/models/models.component';
 import {VehiclesComponent} from './components/vehicles/vehicles.component';
 import {VehicleComponent} from './components/vehicle/vehicle.component';
-import {MainPageComponent} from "./components/main-page/main-page.component";
+import {MainPageComponent} from './components/main-page/main-page.component';
+import {UserComponent} from './components/user/user.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'user',
+    component: UserComponent
   },
   {
     path: ':car-brand',

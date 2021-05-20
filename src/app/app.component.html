@@ -4,8 +4,9 @@
       <a routerLink="/" class="brand-logo"><img height="60px" src="assets/logo.png"></a>
       <ul class="right">
         <li *ngIf="!currentUser"><a routerLink="/login">Login</a></li>
+        <li *ngIf="currentUser" class="red-text"><i class="large material-icons">account_circle</i></li>
+        <li *ngIf="currentUser" class="cyan-text">{{currentUser}}</li>
         <li *ngIf="currentUser"><a (click)="logout()">Log out</a></li>
-        <li><a >About</a></li>
       </ul>
     </div>
   </nav>

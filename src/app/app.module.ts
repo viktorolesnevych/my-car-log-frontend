@@ -14,6 +14,7 @@ import { VehicleComponent } from './components/vehicle/vehicle.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import {FormsModule} from "@angular/forms";
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {FormsModule} from "@angular/forms";
     VehiclesComponent,
     VehicleComponent,
     MainPageComponent,
-    CommentsComponent
+    CommentsComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
