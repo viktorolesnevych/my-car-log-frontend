@@ -49,6 +49,9 @@
         <a (click)="addVehicle()" class="btn">Add</a>
       </div>
     </div>
+      <div class="input-field col s6">
+        <p *ngIf="isFormShown[2]" class="center-align red-text">{{isFormShown[2]}}</p>
+      </div>
   </form>
 </div>
 

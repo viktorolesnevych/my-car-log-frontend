@@ -21,5 +21,8 @@ export class SignupComponent implements OnInit {
     const newUser = {userName: this.userName, emailAddress: this.emailAddress, password: this.password};
     this.userService.registerUser(newUser);
   }
+  ngOnDestroy(): void{
+    this.userService.errorSubject.next('');
+  }
 
 }

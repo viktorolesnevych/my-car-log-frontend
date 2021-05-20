@@ -22,7 +22,7 @@ export class UserComponent implements OnInit {
   imgLink: string;
   description: string;
 
-  isFormShown = [false, 'Vehicle'];
+  isFormShown = [false, 'Vehicle', ''];
 
   constructor(private userService: UserService, private brandsService: BrandsService,
               private vehiclesService: VehiclesService) { }
@@ -44,14 +44,19 @@ export class UserComponent implements OnInit {
       this.isFormShown[1] = 'Hide';
     }
     else {
+      this.brand = this.model = this.imgLink = this.description = this.nickName = this.color = '';
       this.isFormShown[0] = false;
+      this.isFormShown[2] = '';
       this.isFormShown[1] = 'Vehicle';
     }
   }
 
   addVehicle(): void{
     const brand: Brand = this.brands.find(brandVar => brandVar.name === this.brand);
-    const model: Model = brand.modelList.find(modelVar => modelVar.name === this.model);
+    let model: Model;
+    if (brand) {
+       model = brand.modelList.find(modelVar => modelVar.name === this.model);
+    }
     const newVehicle = {
       color: this.color,
       nickName: this.nickName,
@@ -63,9 +68,13 @@ export class UserComponent implements OnInit {
         this.vehiclesService.addVehicle(brand.id, model.id, newVehicle).subscribe((response: Vehicle) => {
           console.log(response);
           this.user.vehicleList.push(response);
+          this.isFormShown[2] = '';
           this.showAddForm();
         });
       }
+    }
+    else{
+      this.isFormShown[2] = 'Something went wrong. Check input data and try again!';
     }
   }
 

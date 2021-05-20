@@ -19,4 +19,7 @@ export class LoginComponent implements OnInit {
     const user = {emailAddress: this.emailAddress, password: this.password};
     this.userService.loginUser(user);
     }
+  ngOnDestroy(): void{
+    this.userService.errorSubject.next('');
+  }
 }
