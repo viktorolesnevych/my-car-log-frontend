@@ -95,4 +95,11 @@ export class VehicleComponent implements OnInit {
       this.errorText = 'Check the inputs and try again!';
     }
   }
+
+  deleteLog(logId: number): void{
+    this.vehicleService.deleteLog(this.vehicle.id, logId).subscribe(response => {
+      this.vehicle.logList = this.vehicle.logList.filter(log => log.id !== logId);
+      console.log(response);
+    });
+  }
 }

@@ -32,10 +32,13 @@ export class VehiclesService {
   addLog(vehicleId: number, newLog: Log): Observable<any>{
     const token = this.getToken();
     const requestOptions = this.getRequestOptions(token);
-    console.log(requestOptions);
-    console.log(vehicleId);
-    console.log(newLog);
     return this.http.post(`${this.apiUrl}/vehicle/${vehicleId}/logs`, newLog, requestOptions);
+  }
+
+  deleteLog(vehicleId: number, logId: number): Observable<any>{
+    const token = this.getToken();
+    const requestOptions = this.getRequestOptions(token);
+    return this.http.delete(`${this.apiUrl}/vehicle/${vehicleId}/logs/${logId}`, requestOptions);
   }
 
   getToken(): string{
