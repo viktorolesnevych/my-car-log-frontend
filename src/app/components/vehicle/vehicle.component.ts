@@ -33,6 +33,7 @@ export class VehicleComponent implements OnInit {
         this.vehicleService.getVehicleById(parseInt(params.get('vehicle-id'), 10))
           .subscribe((response: Vehicle) => {
           this.vehicle = response;
+          this.vehicle.logList.reverse();
           this.showComments = new Array(this.vehicle.logList.length);
           this.showComments.forEach(value => value = false);
           });
@@ -86,7 +87,7 @@ export class VehicleComponent implements OnInit {
       this.vehicleService.addLog(this.vehicle.id, newLog).subscribe((response: Log) => {
         console.log(response);
         this.showComments.push(false);
-        this.vehicle.logList.push(response);
+        this.vehicle.logList.unshift(response);
         this.title = '';
         this.imgLink = '';
         this.content = '';

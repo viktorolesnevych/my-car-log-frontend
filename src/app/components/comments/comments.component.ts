@@ -29,6 +29,7 @@ export class CommentsComponent implements OnInit {
             ' - (' + newDate.getHours() + ':' + newDate.getMinutes() + ')';
         }
       });
+      this.log.commentList.reverse();
     }
     this.userService.getUsers().subscribe(response => {
       this.users = response;
@@ -57,7 +58,7 @@ export class CommentsComponent implements OnInit {
         response.dateCreated = (newDate.getMonth() + 1).toString() + '.' + newDate.getDate().toString() + '.' +
           newDate.getFullYear() +
           ' - (' + newDate.getHours() + ':' + newDate.getMinutes() + ')';
-        this.log.commentList.push(response);
+        this.log.commentList.unshift(response);
         this.content = '';
         this.changeNewComment();
       });
