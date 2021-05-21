@@ -15,19 +15,30 @@ export class CommentsComponent implements OnInit {
   @Input() log: Log;
   users: User[];
   content: string;
+  currentUserEmail: string;
+
+  newComment = false;
   constructor(private userService: UserService, private vehicleService: VehiclesService) { }
 
   ngOnInit(): void {
     this.log.commentList.forEach(comment => {
      const newDate: Date = new Date(comment.dateCreated);
-     comment.dateCreated = (newDate.getMonth() + 1) + '.' + newDate.getDate() + '.' + newDate.getFullYear();
+     comment.dateCreated = (newDate.getMonth() + 1) + '.' + newDate.getDate() + '.' + newDate.getFullYear() +
+       ' - (' + newDate.getHours() + ':' + newDate.getMinutes() + ')';
     });
     this.userService.getUsers().subscribe(response => this.users = response);
-  }
+    if (localStorage.getItem('currentUser')) {
+      this.currentUserEmail = localStorage.getItem('currentUser');
+      }
+    }
 
   getUserName(comment: Comment, id: number): string{
     return this.users.filter(user => user.id === comment.user_id)[0].userName;
   }
+  changeNewComment(): void{
+    this.newComment = !this.newComment;
+  }
+
 
   addComment(): void{
     let newComment;
@@ -36,6 +47,9 @@ export class CommentsComponent implements OnInit {
         textContent: this.content,
       };
       this.vehicleService.addComment(this.log.vehicle_id, this.log.id, newComment).subscribe((response: Comment) => {
+        const newDate: Date = new Date(response.dateCreated);
+        response.dateCreated = (newDate.getMonth() + 1) + '.' + newDate.getDate() + '.' + newDate.getFullYear() +
+          ' - (' + newDate.getHours() + ':' + newDate.getMinutes() + ')';
         this.log.commentList.push(response);
         this.content = '';
       });

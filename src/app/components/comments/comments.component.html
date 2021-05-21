@@ -1,19 +1,20 @@
 <ul *ngIf="log.commentList" class="collection">
-  <a class="waves-effect waves-light btn"><i class="material-icons right">create</i>New comment</a>
-  <form>
+  <a *ngIf="!newComment && currentUserEmail" (click)="changeNewComment()" class="waves-effect waves-light btn"><i class="material-icons right">create</i>New comment</a>
+  <form *ngIf="newComment">
     <div class="row">
       <div class="input-field col s4">
         <input [(ngModel)]="content" name="content" id="content" type="text" class="validate">
         <label for="content">Comment</label>
       </div>
       <div class="input-field col s4">
-        <a (click)="addComment()" class="waves-effect waves-light btn">Add Log</a>
+        <a (click)="addComment()" class="waves-effect waves-light btn">Add Comment</a>
+        <a (click)="changeNewComment()" class="waves-effect red btn">Cancel</a>
       </div>
     </div>
   </form>
   <li *ngFor="let comment of log.commentList.reverse()" class="collection-item avatar">
     <i class="material-icons circle">folder</i>
-    <span *ngIf="users" class="title"><b>{{getUserName(comment, comment.user_id)}}</b></span>
+    <span *ngIf="users" class="title"><b>{{getUserName(comment, comment.user_id) | titlecase}}</b></span>
     <p>{{comment.textContent}}<br>
       <span class="grey-text lighten-3">{{comment.dateCreated}}</span>
     </p>

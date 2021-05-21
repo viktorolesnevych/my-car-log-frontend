@@ -45,9 +45,6 @@ export class VehiclesService {
   addComment(vehicleId: number, logId: number, newComment: Comment): Observable<any>{
     const token = this.getToken();
     const requestOptions = this.getRequestOptions(token);
-    console.log(vehicleId);
-    console.log(logId);
-    console.log(newComment);
     return this.http.post(`${this.apiUrl}/vehicles/${vehicleId}/logs/${logId}/comments`, newComment, requestOptions);
   }
 
@@ -57,8 +54,7 @@ export class VehiclesService {
   getRequestOptions(token: string): object{
     return {
       headers: new HttpHeaders({
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json'
+        Authorization: `Bearer ${token}`
       }),
     };
   }
