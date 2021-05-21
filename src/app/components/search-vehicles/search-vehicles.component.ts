@@ -25,11 +25,21 @@ export class SearchVehiclesComponent implements OnInit {
           if (a.model_name > b.model_name) { return 1; }
         }
       });
+      this.searchService.searchSubject.subscribe(search => {
+        this.searchValue = search;
+        this.vehicles = this.vehicles.filter(vehicle => {
+          console.log(this.searchValue);
+          if (vehicle.brand_name.includes(this.searchValue) || vehicle.model_name.includes(this.searchValue) ||
+            vehicle.nickName.includes(this.searchValue) || vehicle.description.includes(this.searchValue)) {
+            console.log(true);
+            return vehicle;
+          }
+        });
+      });
     });
-    this.searchService.searchSubject.subscribe(search => {
-      this.searchValue = search;
-      console.log(search);
-    });
+  }
+  ngOnDestroy(): void{
+    this.searchService.searchNext('');
   }
 
 }

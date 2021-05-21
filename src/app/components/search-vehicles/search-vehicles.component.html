@@ -1,4 +1,5 @@
 <h2 class="center">Vehicles</h2>
+<p *ngIf="searchValue" class="center red-text">searching for "{{searchValue}}" ({{vehicles.length}} results):</p>
 <div class="row vehicles">
   <div *ngFor="let vehicle of vehicles" class="card col s3 offset-m1">
     <div class="card-image waves-effect waves-block waves-light">
