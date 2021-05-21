@@ -28,10 +28,9 @@ export class SearchVehiclesComponent implements OnInit {
       this.searchService.searchSubject.subscribe(search => {
         this.searchValue = search;
         this.vehicles = this.vehicles.filter(vehicle => {
-          console.log(this.searchValue);
-          if (vehicle.brand_name.includes(this.searchValue) || vehicle.model_name.includes(this.searchValue) ||
-            vehicle.nickName.includes(this.searchValue) || vehicle.description.includes(this.searchValue)) {
-            console.log(true);
+          this.searchValue = this.searchValue.toLowerCase();
+          if (vehicle.brand_name.toLowerCase().includes(this.searchValue) || vehicle.model_name.toLowerCase().includes(this.searchValue) ||
+            vehicle.nickName.toLowerCase().includes(this.searchValue) || vehicle.description.toLowerCase().includes(this.searchValue)) {
             return vehicle;
           }
         });
