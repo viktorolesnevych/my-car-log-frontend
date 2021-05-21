@@ -64,3 +64,10 @@ MyCarLog is an application which allows different users to share their experienc
 ![Main](planning/MainScreen.png)
 ![Login](planning/LoginScreen.png)
 ![Vehicle](planning/VehicleScreen.png)
+
+## Future ideas
+* Being able to subscribe to different users and see their updates on the home page
+* Send direct messages
+* Upload files and photos to log
+* Having likes and reaction features for logs
+* Having email or phone notifier about actions on your log
