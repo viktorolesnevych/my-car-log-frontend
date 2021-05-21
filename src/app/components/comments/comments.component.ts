@@ -20,13 +20,14 @@ export class CommentsComponent implements OnInit {
   constructor(private userService: UserService, private vehicleService: VehiclesService) { }
 
   ngOnInit(): void {
-    console.log(this.log);
     if (this.log.commentList) {
       this.log.commentList.forEach(comment => {
         const newDate: Date = new Date(comment.dateCreated);
-        comment.dateCreated = (newDate.getMonth() + 1).toString() + '.' + newDate.getDate().toString() + '.' +
-          newDate.getFullYear() +
-          ' - (' + newDate.getHours().toString() + ':' + newDate.getMinutes().toString() + ')';
+        if (!comment.dateCreated.includes('created')) {
+          comment.dateCreated = 'created: ' + (newDate.getMonth() + 1) + '.' + newDate.getDate() + '.' +
+            newDate.getFullYear() +
+            ' - (' + newDate.getHours() + ':' + newDate.getMinutes() + ')';
+        }
       });
     }
     this.userService.getUsers().subscribe(response => {
@@ -63,6 +64,8 @@ export class CommentsComponent implements OnInit {
     }
   }
   deleteComment(vehicleId: number, logId: number, commentId: number): void{
-    this.vehicleService.deleteComment(vehicleId, logId, commentId).subscribe(response => console.log(response));
+    this.vehicleService.deleteComment(vehicleId, logId, commentId).subscribe(response => {
+      this.log.commentList = this.log.commentList.filter(comment => comment.id !== commentId);
+    });
   }
 }

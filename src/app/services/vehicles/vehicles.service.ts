@@ -51,7 +51,7 @@ export class VehiclesService {
   deleteComment(vehicleId: number, logId: number, commentId: number): Observable<any>{
     const token = this.getToken();
     const requestOptions = this.getRequestOptions(token);
-    return this.http.post(`${this.apiUrl}/vehicles/${vehicleId}/logs/${logId}/comments/${commentId}`, requestOptions);
+    return this.http.delete(`${this.apiUrl}/vehicles/${vehicleId}/logs/${logId}/comments/${commentId}`, requestOptions);
   }
 
   getToken(): string{
