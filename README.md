@@ -22,7 +22,7 @@ MyCarLog is an application which allows different users to share their experienc
 ![Wireframe-Profile](planning/Wireframe-Profile.png)
 ![Wireframe-SignUp](planning/Wireframe-SignUp.png)
 ## User-stories
-
+![User_Stories](planning/UserStories.png)
 ## API Overview
 ### ER-Diagram
 ![ER Diagram](planning/ERD-myCarLog.png)
@@ -59,3 +59,8 @@ MyCarLog is an application which allows different users to share their experienc
 | GET | /auth/users | Get a list of users | Public |
 
 ---
+## Screenshots
+![Home](planning/HomeScreen.png)
+![Main](planning/MainScreen.png)
+![Login](planning/LoginScreen.png)
+![Vehicle](planning/VehicleScreen.png)
