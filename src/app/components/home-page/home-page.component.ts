@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare const M: any;
 
 @Component({
   selector: 'app-home-page',
@@ -10,6 +11,9 @@ export class HomePageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    M.AutoInit();
+  }
+  ngOnChange(): void{
   }
 
 }
