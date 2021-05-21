@@ -12,8 +12,13 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     M.AutoInit();
+    const iCarousel = new M.Carousel(document.querySelector('.carousel.carousel-slider'), {
+      fullWidth: true,
+      indicators: true
+    });
+    // this did the trick
+    setInterval(() => {
+      iCarousel.next();
+    }, 4000);
   }
-  ngOnChange(): void{
-  }
-
 }
