@@ -53,6 +53,9 @@ export class VehiclesService {
     const requestOptions = this.getRequestOptions(token);
     return this.http.delete(`${this.apiUrl}/vehicles/${vehicleId}/logs/${logId}/comments/${commentId}`, requestOptions);
   }
+  getVehicles(): Observable<any>{
+    return this.http.get(`${this.apiUrl}/vehicles`);
+  }
 
   getToken(): string{
     return localStorage.getItem('token');

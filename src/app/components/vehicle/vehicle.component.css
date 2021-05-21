@@ -21,3 +21,6 @@
 .material-icons{
   cursor: pointer;
 }
+.card-image{
+  width: 250px;
+}

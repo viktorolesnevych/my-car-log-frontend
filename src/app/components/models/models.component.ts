@@ -19,7 +19,11 @@ export class ModelsComponent implements OnInit {
         this.currentBrandName = params.get('car-brand');
         this.brandsService.getBrand(this.currentBrandName).subscribe(response => {
           this.models = response.modelList;
-          console.log(response);
+          this.models.sort((a, b) => {
+            if (a.name < b.name) { return -1; }
+            if (a.name > b.name) { return 1; }
+            return 0;
+          });
       });
   });
 }

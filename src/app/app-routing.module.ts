@@ -8,6 +8,7 @@ import {VehiclesComponent} from './components/vehicles/vehicles.component';
 import {VehicleComponent} from './components/vehicle/vehicle.component';
 import {MainPageComponent} from './components/main-page/main-page.component';
 import {UserComponent} from './components/user/user.component';
+import {SearchVehiclesComponent} from "./components/search-vehicles/search-vehicles.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'search',
+    component: SearchVehiclesComponent
   },
   {
     path: 'user',
