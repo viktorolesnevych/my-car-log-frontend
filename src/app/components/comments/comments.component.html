@@ -15,7 +15,7 @@
   <li *ngFor="let comment of log.commentList.reverse()" class="collection-item avatar">
     <i class="material-icons circle">folder</i>
     <span *ngIf="users" class="title"><b>{{getUserName(comment, comment.user_id) | titlecase}}</b></span>
-    <a *ngIf="comment.user_id == currentUser.id" href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
+    <a (click)="deleteComment(log.vehicle_id, comment.log_id, comment.id)" *ngIf="comment.user_id === currentUser.id" class="secondary-content"><i class="material-icons">delete</i></a>
     <p>{{comment.textContent}}<br>
       <span class="grey-text lighten-3">{{comment.dateCreated}}</span>
     </p>

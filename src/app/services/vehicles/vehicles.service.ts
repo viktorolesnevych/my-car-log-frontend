@@ -48,6 +48,12 @@ export class VehiclesService {
     return this.http.post(`${this.apiUrl}/vehicles/${vehicleId}/logs/${logId}/comments`, newComment, requestOptions);
   }
 
+  deleteComment(vehicleId: number, logId: number, commentId: number): Observable<any>{
+    const token = this.getToken();
+    const requestOptions = this.getRequestOptions(token);
+    return this.http.post(`${this.apiUrl}/vehicles/${vehicleId}/logs/${logId}/comments/${commentId}`, requestOptions);
+  }
+
   getToken(): string{
     return localStorage.getItem('token');
   }

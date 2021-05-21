@@ -61,5 +61,8 @@ export class CommentsComponent implements OnInit {
         this.changeNewComment();
       });
     }
-    }
+  }
+  deleteComment(vehicleId: number, logId: number, commentId: number): void{
+    this.vehicleService.deleteComment(vehicleId, logId, commentId).subscribe(response => console.log(response));
+  }
 }
