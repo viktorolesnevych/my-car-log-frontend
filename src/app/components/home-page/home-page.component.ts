@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {SearchService} from "../../services/search/search.service";
+import {Router} from "@angular/router";
 declare const M: any;
 
 @Component({
@@ -7,8 +9,8 @@ declare const M: any;
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-
-  constructor() { }
+  search: string;
+  constructor(private searchService: SearchService, private router: Router) { }
 
   ngOnInit(): void {
     M.AutoInit();
@@ -20,5 +22,12 @@ export class HomePageComponent implements OnInit {
     setInterval(() => {
       iCarousel.next();
     }, 4000);
+  }
+
+  newSearch(): void{
+    if (this.search){
+      this.searchService.searchNext(this.search);
+      this.router.navigate(['/search']);
+    }
   }
 }

@@ -21,9 +21,9 @@
     <div class="col s12">
       <div class="row">
         <div class="input-field col s6 offset-s3">
-          <i class="material-icons prefix">search</i>
-          <input type="text" id="autocomplete-input" class="autocomplete">
-          <label for="autocomplete-input">search log</label>
+          <input [(ngModel)]="search" type="text" id="autocomplete-input" class="autocomplete">
+          <i (click)="newSearch()" class="material-icons prefix">search</i>
+          <label for="autocomplete-input">search vehicle</label>
         </div>
       </div>
     </div>
