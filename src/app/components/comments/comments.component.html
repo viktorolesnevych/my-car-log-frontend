@@ -12,7 +12,7 @@
       </div>
     </div>
   </form>
-  <li *ngFor="let comment of log.commentList.reverse()" class="collection-item avatar">
+  <li *ngFor="let comment of log.commentList" class="collection-item avatar">
     <i class="material-icons circle">folder</i>
     <span *ngIf="users" class="title"><b>{{comment.user_name| titlecase}}</b></span>
     <span *ngIf="currentUser">
