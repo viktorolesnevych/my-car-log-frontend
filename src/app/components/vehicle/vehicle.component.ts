@@ -33,7 +33,7 @@ export class VehicleComponent implements OnInit {
         this.vehicleService.getVehicleById(parseInt(params.get('vehicle-id'), 10))
           .subscribe((response: Vehicle) => {
           this.vehicle = response;
-          this.vehicle.logList.reverse();
+          //this.vehicle.logList.reverse();
           this.showComments = new Array(this.vehicle.logList.length);
           this.showComments.forEach(value => value = false);
           });

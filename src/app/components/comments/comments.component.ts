@@ -29,7 +29,7 @@ export class CommentsComponent implements OnInit {
             ' - (' + newDate.getHours() + ':' + newDate.getMinutes() + ')';
         }
       });
-      this.log.commentList.reverse();
+     // this.log.commentList.reverse();
     }
     this.userService.getUsers().subscribe(response => {
       this.users = response;
