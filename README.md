@@ -3,7 +3,7 @@
 MyCarLog is an application which allows different users to share their experience about their cars. For example, user can share his story of fixing some technical error, upgrade of a car or just a regular story about his vehicle. I called this story - LOG and other users can also interact and leave comments on any logs. This is kind of a simple social media for car lovers, where the main heros are not real people but their cars.
 
 ## Links
-[Back-end Repository](https://github.com/viktorolesnevych/my-car-log-backend.com)<br />
+[Back-end Repository](https://github.com/viktorolesnevych/my-car-log-backend)<br />
 [Back-end Heroku](https://mycarlog.herokuapp.com/)<br />
 [Front-end Heroku](http://my-car-log.herokuapp.com/)<br />
 ## Technologies used
@@ -17,11 +17,15 @@ MyCarLog is an application which allows different users to share their experienc
 * PostgreSQL
 
 ## Wireframes
-
+![Wireframe-Home](planning/Wireframe-Home.png)
+![Wireframe-Home2](planning/Wireframe-Home2.png)
+![Wireframe-Profile](planning/Wireframe-Profile.png)
+![Wireframe-SignUp](planning/Wireframe-SignUp.png)
 ## User-stories
 
 ## API Overview
-### ERD-Diagram
+### ER-Diagram
+![ER Diagram](planning/ERD-myCarLog.png)
 ### Main Endpoints
 | HTTP REQUEST | PATH | FUNCTIONALITY | Access |
 | ------------ | ---- | ------------- | ------ |
