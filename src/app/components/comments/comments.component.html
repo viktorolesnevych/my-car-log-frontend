@@ -1,5 +1,17 @@
 <ul *ngIf="log.commentList" class="collection">
-  <li *ngFor="let comment of log.commentList" class="collection-item avatar">
+  <a class="waves-effect waves-light btn"><i class="material-icons right">create</i>New comment</a>
+  <form>
+    <div class="row">
+      <div class="input-field col s4">
+        <input [(ngModel)]="content" name="content" id="content" type="text" class="validate">
+        <label for="content">Comment</label>
+      </div>
+      <div class="input-field col s4">
+        <a (click)="addComment()" class="waves-effect waves-light btn">Add Log</a>
+      </div>
+    </div>
+  </form>
+  <li *ngFor="let comment of log.commentList.reverse()" class="collection-item avatar">
     <i class="material-icons circle">folder</i>
     <span *ngIf="users" class="title"><b>{{getUserName(comment, comment.user_id)}}</b></span>
     <p>{{comment.textContent}}<br>
@@ -7,8 +19,3 @@
     </p>
   </li>
 </ul>
-  <ul *ngIf="!log.commentList"class="collection">
-    <li class="collection-item avatar">
-      <span class="title">No comments yet</span>
-    </li>
-  </ul>

@@ -4,6 +4,7 @@ import {UserService} from '../../services/user/user.service';
 import {Observable} from "rxjs";
 import {User} from "../../models/User";
 import {Comment} from "../../models/Comment";
+import {VehiclesService} from "../../services/vehicles/vehicles.service";
 
 @Component({
   selector: 'app-comments',
@@ -13,7 +14,8 @@ import {Comment} from "../../models/Comment";
 export class CommentsComponent implements OnInit {
   @Input() log: Log;
   users: User[];
-  constructor(private userService: UserService) { }
+  content: string;
+  constructor(private userService: UserService, private vehicleService: VehiclesService) { }
 
   ngOnInit(): void {
     this.log.commentList.forEach(comment => {
@@ -26,4 +28,17 @@ export class CommentsComponent implements OnInit {
   getUserName(comment: Comment, id: number): string{
     return this.users.filter(user => user.id === comment.user_id)[0].userName;
   }
+
+  addComment(): void{
+    let newComment;
+    if (this.content) {
+      newComment = {
+        textContent: this.content,
+      };
+      this.vehicleService.addComment(this.log.vehicle_id, this.log.id, newComment).subscribe((response: Comment) => {
+        this.log.commentList.push(response);
+        this.content = '';
+      });
+    }
+    }
 }

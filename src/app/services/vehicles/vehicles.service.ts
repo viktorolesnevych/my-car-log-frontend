@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Vehicle} from '../../models/Vehicle';
 import {Log} from "../../models/Log";
+import {Comment} from "../../models/Comment";
 
 @Injectable({
   providedIn: 'root'
@@ -41,13 +42,23 @@ export class VehiclesService {
     return this.http.delete(`${this.apiUrl}/vehicle/${vehicleId}/logs/${logId}`, requestOptions);
   }
 
+  addComment(vehicleId: number, logId: number, newComment: Comment): Observable<any>{
+    const token = this.getToken();
+    const requestOptions = this.getRequestOptions(token);
+    console.log(vehicleId);
+    console.log(logId);
+    console.log(newComment);
+    return this.http.post(`${this.apiUrl}/vehicles/${vehicleId}/logs/${logId}/comments`, newComment, requestOptions);
+  }
+
   getToken(): string{
     return localStorage.getItem('token');
   }
   getRequestOptions(token: string): object{
     return {
       headers: new HttpHeaders({
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
       }),
     };
   }
